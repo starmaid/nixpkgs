@@ -13,6 +13,8 @@
   microsoft-gsl,
   spdlog,
   systemd,
+  sdl2-compat,
+  cairomm,
 }:
 
 stdenv.mkDerivation rec {
@@ -43,6 +45,8 @@ stdenv.mkDerivation rec {
     microsoft-gsl
     spdlog
     systemd
+    sdl2-compat
+    cairomm
   ];
 
   # Original installs udev rules and service config into global paths
@@ -59,7 +63,7 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     "-Dservice_manager=systemd"
     "-Dsample_config=false"
-    "-Ddebug_tools="
+    "-Ddebug_tools=show,calibrate"
     "-Db_lto=false" # plugin needed to handle lto object -> undefined reference to ...
   ];
 
